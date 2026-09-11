@@ -7,14 +7,15 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>圖泊山 · 雲起築基</title>
 <style>
-html,body {margin:0;width:100%;height:100%;overflow:hidden;background:#0a141c;color:#d9ece5;font-family:system-ui,sans-serif;overscroll-behavior:none}
+@font-face {font-family:CultivationSerif;src:url('NotoSerifCJKtc-SemiBold.otf') format('opentype');font-display:swap}
+html,body {margin:0;width:100%;height:100%;overflow:hidden;background:#0a141c;color:#d9ece5;font-family:CultivationSerif,serif;overscroll-behavior:none}
 #safe {position:fixed;inset:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);display:flex;align-items:center;justify-content:center}
 canvas {display:block;outline:none;touch-action:none}
 /* Godot's virtual keyboard uses hidden native text fields. iOS zooms fields
    below 16 CSS px, even when invisible. Preserve user accessibility zoom. */
 input,textarea {font-size:16px !important;line-height:normal !important}
 #loading {position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;background:linear-gradient(transparent,rgba(6,22,26,.88)),url('title_tuboshan.png') center/cover,#0a141c;padding:28px 28px max(28px,env(safe-area-inset-bottom));gap:14px;text-align:center}
-h1 {font-family:serif;color:#e4d4ae;font-size:38px;letter-spacing:.2em;margin:0} p {max-width:340px;line-height:1.7;margin:0} button {font:600 18px system-ui;background:rgba(15,25,25,.7);border:1px solid #c4a468;color:#eeddb3;border-radius:4px;min-height:52px;padding:12px 32px}
+h1 {color:#e4d4ae;font-size:38px;letter-spacing:.2em;margin:0} p {max-width:340px;line-height:1.7;margin:0} button {font:600 18px CultivationSerif,serif;background:rgba(15,25,25,.7);border:1px solid #c4a468;color:#eeddb3;border-radius:4px;min-height:52px;padding:12px 32px}
 progress{width:260px;accent-color:#65c6ad} #retry{display:none}
 </style>
 <link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
@@ -45,7 +46,7 @@ document.getElementById('start').addEventListener('click',async()=>{
  try {
   if(location.protocol==='file:')throw new Error('請透過網站網址開啟，不能直接點開 HTML 檔。');
   if(typeof Engine==='undefined')throw new Error('遊戲引擎未載入，請確認網路與網站檔案。');
-  const engine=new Engine({"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":48764816,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4});
+  const engine=new Engine({"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":48766336,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4});
   await engine.startGame({canvas,canvasResizePolicy:0,onProgress:(current,total)=>{
    if(total>0){progress.max=total;progress.value=current;statusLabel.textContent='載入 '+Math.floor(current/total*100)+'%';}
   }});
