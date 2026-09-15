@@ -17,6 +17,7 @@ input,textarea {font-size:16px !important;line-height:normal !important}
 #loading {position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;background:linear-gradient(transparent,rgba(6,22,26,.88)),url('title_tuboshan.png') center/cover,#0a141c;padding:28px 28px max(28px,env(safe-area-inset-bottom));gap:14px;text-align:center}
 h1 {color:#e4d4ae;font-size:38px;letter-spacing:.2em;margin:0} p {max-width:340px;line-height:1.7;margin:0} button {font:600 18px CultivationSerif,serif;background:rgba(15,25,25,.7);border:1px solid #c4a468;color:#eeddb3;border-radius:4px;min-height:52px;padding:12px 32px}
 progress{width:260px;accent-color:#65c6ad} #retry{display:none}
+#build {font-size:12px;color:#8aa39d;letter-spacing:.08em;margin:0;opacity:.85}
 #quality {font:18px CultivationSerif,serif;min-height:44px;padding:6px 12px;color:#eeddb3;background:#10292b;border:1px solid #c4a468;border-radius:4px}
 </style>
 <link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
@@ -25,7 +26,7 @@ progress{width:260px;accent-color:#65c6ad} #retry{display:none}
 </head>
 <body>
 <div id="safe"><canvas id="canvas" tabindex="0" aria-label="圖泊山遊戲畫面"></canvas></div>
-<section id="loading"><h1>圖泊山</h1><p>雲起築基 · iPhone 直向試玩版</p><label for="quality">畫面清晰度</label><select id="quality"><option value="1.5">省電 · 1.5 倍</option><option value="2" selected>清晰 · 2 倍</option><option value="3">高畫質 · 最高 3 倍</option></select><p id="status" role="status">建議使用 Safari、一般瀏覽模式。首次載入請保持網頁開啟。</p><progress id="progress" hidden></progress><button id="start">進入遊戲</button><button id="retry" onclick="location.reload()">重新載入</button><p>進度儲存在此瀏覽器。清除網站資料可能遺失存檔；本版沒有雲端同步。</p></section>
+<section id="loading"><h1>圖泊山</h1><p>雲起築基 · iPhone 直向試玩版</p><label for="quality">畫面清晰度</label><select id="quality"><option value="1.5">省電 · 1.5 倍</option><option value="2" selected>清晰 · 2 倍</option><option value="3">高畫質 · 最高 3 倍</option></select><p id="status" role="status">建議使用 Safari、一般瀏覽模式。首次載入請保持網頁開啟。</p><progress id="progress" hidden></progress><button id="start">進入遊戲</button><button id="retry" onclick="location.reload()">重新載入</button><p>進度儲存在此瀏覽器。清除網站資料可能遺失存檔；本版沒有雲端同步。</p><p id="build">版本 20260915-135516</p></section>
 <script src="index.js"></script>
 <script>
 const canvas=document.getElementById('canvas'),safe=document.getElementById('safe');
@@ -53,7 +54,7 @@ document.getElementById('start').addEventListener('click',async()=>{
  try {
   if(location.protocol==='file:')throw new Error('請透過網站網址開啟，不能直接點開 HTML 檔。');
   if(typeof Engine==='undefined')throw new Error('遊戲引擎未載入，請確認網路與網站檔案。');
-  const engine=new Engine({"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":54430464,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4});
+  const engine=new Engine({"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":54431488,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4});
   await engine.startGame({canvas,canvasResizePolicy:0,onProgress:(current,total)=>{
    if(total>0){progress.max=total;progress.value=current;statusLabel.textContent='載入 '+Math.floor(current/total*100)+'%';}
   }});
